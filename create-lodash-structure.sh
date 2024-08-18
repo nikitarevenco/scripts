@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Used: Generate all of the lodash library's utility functions (item) as item.ts with item.test.ts containing empty vitest tests under /section/item/
-
 sections=("array" "collection" "date" "function" "lang" "math" "number" "object" "seq" "string")
 
 array_items=("chunk" "compact" "concat" "difference" "differenceBy" "differenceWith" "drop" "dropRight" "dropRightWhile" "dropWhile" "fill" "findIndex" "findLastIndex" "head" "flatten" "flattenDeep" "flattenDepth" "fromPairs" "indexOf" "initial" "intersection" "intersectionBy" "intersectionWith" "join" "last" "lastIndexOf" "nth" "pull" "pullAll" "pullAllBy" "pullAllWith" "pullAt" "remove" "reverse" "slice" "sortedIndex" "sortedIndexBy" "sortedIndexOf" "sortedLastIndex" "sortedLastIndexBy" "sortedLastIndexOf" "sortedUniq" "sortedUniqBy" "tail" "take" "takeRight" "takeRightWhile" "takeWhile" "union" "unionBy" "unionWith" "uniq" "uniqBy" "uniqWith" "unzip" "unzipWith" "without" "xor" "xorBy" "xorWith" "zip" "zipObject" "zipObjectDeep" "zipWith")
