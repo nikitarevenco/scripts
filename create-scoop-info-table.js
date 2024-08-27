@@ -1,13 +1,26 @@
 const { execSync } = require("child_process");
 
-console.log(
-  "7zip autohotkey bat clink diff-so-fancy duf eza fzf git gron lazygit neovim nodejs lua make pnpm python s sd go sharex wezterm zoxide nomino"
-    .split(" ")
-    .map((arg) => {
-      const { homepage, description } = JSON.parse(
-        execSync(`scoop cat ${arg}`).toString(),
-      );
+const scoopPackageNames = execSync(`scoop list`)
+  .toString()
+  .split("\n")
+  .slice(4, -3)
+  .map((str) => str.match(/\S+\b/)[0]);
 
-      return `| [${arg}](${homepage}) | ${description} | \n | - | - |`;
-    }).join("\n"),
-);
+const scoopPackageData = scoopPackageNames
+  .map((arg) => {
+    const { homepage, description } = JSON.parse(
+      execSync(`scoop cat ${arg}`).toString(),
+    );
+
+    return `| [${arg}](${homepage}) | ${description} |`;
+  })
+  .join("\n");
+
+const mdTable = `| Package | Description | \n | - | - | \n ${scoopPackageData}`;
+
+console.log(`
+\`\`\`powershell
+scoop install ${scoopPackageNames.join(" ")}
+\`\`\`
+
+${mdTable}`);
